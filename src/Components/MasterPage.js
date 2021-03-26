@@ -1,0 +1,33 @@
+import React from 'react';
+
+import Navbar from "./Navbar/Navbar";
+import HomePage from "./HomePage/HomePage";
+import Favourites from "./FavouritePage/Favourites";
+
+import {routes} from '../Router/Routes';
+import {Router,Switch,Route} from 'react-router-dom';
+import {createBrowserHistory} from "history";
+import SearchPage from "./SearchPage/SearchPage";
+
+const history = createBrowserHistory();
+
+function MasterPage(props) {
+    return (
+        <Router history={history}>
+            <Navbar/>
+            <Switch>
+                <Route exact path={routes.Home.path}>
+                    <HomePage/>
+                </Route>
+                <Route exact path={routes.Favourites.path}>
+                    <Favourites/>
+                </Route>
+                <Route exact path={routes.Search.path}>
+                    <SearchPage/>
+                </Route>
+            </Switch>
+        </Router>
+    );
+}
+
+export default MasterPage;

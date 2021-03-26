@@ -1,0 +1,70 @@
+.homePage__top {
+  position: relative;
+  width: 100%;
+  height: 23rem;
+  background: url("https://envato-shoebox-0.imgix.net/de76/6bba-e049-4270-bd5f-801703868dcd/DSC_7722.jpg?auto=compress%2Cformat&fit=max&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark2.png&markalign=center%2Cmiddle&markalpha=18&w=1000&s=98b1db145fb4c26ec28c93c907171d31");
+  background-size: 100% 40rem;
+
+  &__filter {
+    width: 100%;
+    height: 23rem;
+    background-color: #f5c518;
+    opacity: 0.9;
+  }
+
+  &__dot {
+    position: absolute;
+    top: 10%;
+    left: 20%;
+
+    & span {
+      z-index: 2;
+      height: 5px;
+      width: 5px;
+      background-color: #ffffff;
+      opacity: 0.7;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 0 1.25rem 1rem 0;
+    }
+  }
+
+  &__text {
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+
+    &__big {
+      display: flex;
+      flex-direction: column;
+      & :first-child {
+        font-size: 3rem;
+        font-weight: 200;
+      }
+
+      & :last-child {
+        font-size: 3rem;
+        font-weight: 800;
+      }
+    }
+
+    &__little {
+      margin-top: 2rem;
+      width: 50%;
+    }
+  }
+}
+
+
+@media only screen and (max-width: 767px) {
+  .homePage__top__text__big {
+    position: absolute;
+    top: 50%;
+  }
+  .homePage__top__text__little {
+    display: none;
+  }
+}
