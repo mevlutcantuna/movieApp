@@ -36,7 +36,6 @@ function SearchBar(props) {
                 <Link onClick={handleClick} style={LinkStyle} to={routes.Search.path}>
                     Search
                 </Link>
-                <button onClick={handleClick}>ADD</button>
             </div>
         </div>
     );

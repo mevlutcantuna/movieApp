@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react';
 
+import '../../../Styles/CarouselPage.scss';
+
 import Carousel,{autoplayPlugin} from '@brainhubeu/react-carousel'
 import '@brainhubeu/react-carousel/lib/style.css';
 
@@ -12,13 +14,14 @@ function CarouselPage(props) {
 
     useEffect(() => {
         props.getCarouselItems();
-    });
-
+    },[]);
 
     const items = props.carouselItems.Search;
 
+    //console.log(items);
+
     return (
-        <div style={{width:'60rem',marginBottom:'3rem',marginTop:'2rem'}} className='carouselPage'>
+        <div style={{marginBottom:'3rem',marginTop:'2rem'}} className='carouselPage'>
             <div className='carouselPage__title'>
                 <h2>Popular Movies</h2>
             </div>
@@ -38,7 +41,7 @@ function CarouselPage(props) {
 
                 >
                     {items !== undefined ? items.map((item) =>
-                            <CarouselItem key={item.imdbID} info={item}/>)
+                            <CarouselItem handlePageChange={props.handlePageChange} key={item.imdbID} info={item}/>)
                             :<h1>Not Found</h1>
                     }
                 </Carousel>

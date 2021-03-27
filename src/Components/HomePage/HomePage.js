@@ -4,13 +4,12 @@ import HomePageTop from "./HomePageTop,";
 import SearchBar from "./SearchBar";
 import CarouselPage from "./Carousel/CarouselPage";
 
-function HomePage() {
+function HomePage(props) {
     return (
         <div className={'homePage'}>
             <HomePageTop/>
             <SearchBar/>
-            <CarouselPage/>
-
+            <CarouselPage handlePageChange={props.handlePageChange}/>
         </div>
     );
 }

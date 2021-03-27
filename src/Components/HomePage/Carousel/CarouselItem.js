@@ -1,7 +1,21 @@
 import React from 'react';
 import '../../../Styles/CarouselItem.scss';
+import {routes} from "../../../Router/Routes";
+import {connect} from "react-redux";
+import {ADDREMOVEFAVOURITE} from "../../../Store/Constants/FavouriteConstant";
+
+
 
 function CarouselItem(props) {
+    const click = (e) => {
+        if(props.info.imdbID === e){
+            let changeID = routes.Details.path.replace(':id',props.info.imdbID);
+            props.handlePageChange(changeID);
+        }
+    }
+
+    console.log(props.favourites);
+
     return (
         <div className="carouselItem">
             <div className="carouselItem__image">
@@ -32,15 +46,26 @@ function CarouselItem(props) {
           </span>
                 </div>
                 <div className="carouselItem__side__fav">
-                    <button className="carouselItem__side__fav__add">
+                    <button  onClick={() => props.addFavourite(props.info)} className="carouselItem__side__fav__add">
                         Add to Favorites
                     </button>
-                    <a href={'/can'} className="carouselItem__side__fav__detail">View Detail</a>
+                    <button onClick={() => click(props.info.imdbID)} className="carouselItem__side__fav__detail">View Detail</button>
                 </div>
             </div>
         </div>
-
     );
 }
 
-export default CarouselItem;
+const mapStateToProps = (state) => {
+    return{
+        favourites: state.FavouriteReducer.favourites
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+        addFavourite: (item) => dispatch({type:ADDREMOVEFAVOURITE.ADD_FAVOURITE,payload: item})
+    }
+}
+
+export default  connect(mapStateToProps,mapDispatchToProps)(CarouselItem);

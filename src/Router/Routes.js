@@ -7,9 +7,9 @@ export const routes = {
       title:'Favourites',
       path:'/favourites',
     },
-    FavouritesItem:{
-        title: 'FavouritesItem',
-        path: '/favourites/:id',
+    Details:{
+        title: 'Details',
+        path: '/details/:id',
     },
     Search:{
         title:'SearchPage',
