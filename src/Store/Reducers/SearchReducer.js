@@ -6,17 +6,27 @@ const initialState = {
     year:'2012',
     type:'Movie',
     fetched:true,
-    isLoading:true,
+    fetching:true,
     error: null
 }
 
 const searchReducer = (state=initialState,action) => {
     switch (action.type){
-        case GETSEARCHITEMS.GET_SEARCH_ITEMS_SUCCESS:
+        case GETSEARCHITEMS.GET_SEARCH_ITEMS_FULFILLED:
             console.log('can');
-            return {...state,name:'',year:'',type:'movie',isLoading: false,fetched: true,error: null ,searchItems: action.payload};
-        case GETSEARCHITEMS.GET_SEARCH_ITEMS_ISLOADING:
-            return {...state,isLoading: true,fetched: false,error: null}
+            return {...state,
+                name:'',
+                year:'',
+                type:'movie',
+                isLoading: false,
+                fetching: true,
+                error: null ,
+                searchItems: action.payload};
+        case GETSEARCHITEMS.GET_SEARCH_ITEMS_PENDING:
+            return {...state,
+                fetching: true,
+                fetched: false,
+                error: null}
         case HANDLESEARCH.HANDLE_SEARCH_NAME:
             return {...state,name : action.payload}
         case HANDLESEARCH.HANDLE_SEARCH_YEAR:

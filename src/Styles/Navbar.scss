@@ -20,6 +20,7 @@ body{
         font-size: 2.5rem;
         font-weight: 600;
         margin-right: 88px;
+
         &__up{
           color: #f5c518;
         }
@@ -44,10 +45,12 @@ body{
     }
 
     &__left{
+      display: flex;
+
       &__input{
         width: 15rem;
         height: 2.25rem;
-        border-radius: 8px;
+        border-radius: 8px 0 0 8px;
         background-color: #f3f3f3;
         outline: none;
         border: none;
@@ -55,6 +58,13 @@ body{
         font-size: 0.75rem;
         text-indent: 16px;
       }
+
+      &__icon{
+        background-color: #f3f3f3;
+        width: 2rem;
+        border-radius: 0 8px 8px 0;
+      }
+
     }
   }
 

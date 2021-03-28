@@ -6,7 +6,7 @@ import {GETSEARCHITEMS, HANDLESEARCH} from "../Constants/SearchConstant";
 export const getSearchItems = (name,year,type) => {
     console.log('can');
     return{
-        type: GETSEARCHITEMS.GET_SEARCH_ITEMS_SUCCESS,
+        type: GETSEARCHITEMS.GET_SEARCH_ITEMS,
         payload: axios.get(`http://www.omdbapi.com/?s=${name}&type=${type}&y=${year}&apikey=9bea682b&`,{})
     }
 }
