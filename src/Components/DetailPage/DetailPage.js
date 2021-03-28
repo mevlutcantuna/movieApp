@@ -6,8 +6,11 @@ import axios from "axios";
 import {routes} from "../../Router/Routes";
 import {ADDREMOVEFAVOURITE} from "../../Store/Constants/FavouriteConstant";
 import {connect} from "react-redux";
+import FavouriteButton from "../FavouritePage/FavouriteButton";
 
 function DetailPage(props) {
+
+    //console.log(props.favourites);
 
     const [item,setItem] = useState([]);
 
@@ -16,8 +19,6 @@ function DetailPage(props) {
         axios.get(`http://www.omdbapi.com/?i=${ID}&apikey=9bea682b`)
             .then(res => setItem(res.data))
     },[props]);
-
-    console.log(item);
 
     return (
         <div className={'detailPage'}>
@@ -36,7 +37,7 @@ function DetailPage(props) {
                             <span>{item.imdbRating}</span>
                         </div>
                         <div className={'detailPage__item__right__top__fav'}>
-                             <button onClick={() => props.addFavourite(item)} className={'detailPage__item__right__top__fav__button'}>Add to Favorites</button>
+                            <FavouriteButton info={item}/>
                         </div>
                     </div>
                     <div className={'detailPage__item__right__middle'}>

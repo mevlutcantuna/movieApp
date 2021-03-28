@@ -2,17 +2,19 @@ import React from 'react';
 import {connect} from "react-redux";
 
 function Favourites(props) {
-
+        console.log(props.favourites)
     return (
         <div>
-            Favourites
+            {props.favourites.map((item) => (
+                <div>{item.Title}</div>
+            ))}
         </div>
     );
 }
 
 const mapStateToProps = (state) => {
     return{
-        favourites : state.FavouriteReducer
+        favourites : state.FavouriteReducer.favourites
     }
 }
 

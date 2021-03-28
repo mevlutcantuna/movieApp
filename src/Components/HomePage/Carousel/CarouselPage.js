@@ -18,13 +18,12 @@ function CarouselPage(props) {
 
     const items = props.carouselItems.Search;
 
-    //console.log(items);
-
     return (
         <div style={{marginBottom:'3rem',marginTop:'2rem'}} className='carouselPage'>
             <div className='carouselPage__title'>
                 <h2>Popular Movies</h2>
             </div>
+
             <div className='carouselPage__carousel'>
                 <Carousel
                     plugins={[
@@ -38,11 +37,10 @@ function CarouselPage(props) {
                         },
                     ]}
                     animationSpeed={1000}
-
                 >
                     {items !== undefined ? items.map((item) =>
                             <CarouselItem handlePageChange={props.handlePageChange} key={item.imdbID} info={item}/>)
-                            :<h1>Not Found</h1>
+                            :<h1>Not Found Carousel</h1>
                     }
                 </Carousel>
             </div>
@@ -56,7 +54,6 @@ const mapStateToProps = (state) => {
     }
 }
 const mapDispatchToProps = (dispatch) => {
-
     return{
         getCarouselItems: () => dispatch(getCarouselItems()),
     }

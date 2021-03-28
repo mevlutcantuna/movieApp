@@ -3,18 +3,18 @@ import '../../../Styles/CarouselItem.scss';
 import {routes} from "../../../Router/Routes";
 import {connect} from "react-redux";
 import {ADDREMOVEFAVOURITE} from "../../../Store/Constants/FavouriteConstant";
-
-
+import FavouriteButton from "../../FavouritePage/FavouriteButton";
 
 function CarouselItem(props) {
+
+    //console.log(props.info);
+
     const click = (e) => {
         if(props.info.imdbID === e){
             let changeID = routes.Details.path.replace(':id',props.info.imdbID);
             props.handlePageChange(changeID);
         }
     }
-
-    console.log(props.favourites);
 
     return (
         <div className="carouselItem">
@@ -46,9 +46,7 @@ function CarouselItem(props) {
           </span>
                 </div>
                 <div className="carouselItem__side__fav">
-                    <button  onClick={() => props.addFavourite(props.info)} className="carouselItem__side__fav__add">
-                        Add to Favorites
-                    </button>
+                    <FavouriteButton info={props.info}/>
                     <button onClick={() => click(props.info.imdbID)} className="carouselItem__side__fav__detail">View Detail</button>
                 </div>
             </div>

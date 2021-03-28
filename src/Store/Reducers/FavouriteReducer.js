@@ -9,7 +9,8 @@ const favouriteReducer = (state = initialState,action) => {
         case ADDREMOVEFAVOURITE.ADD_FAVOURITE:
             return {...state,favourites: [...state.favourites,action.payload]};
         case ADDREMOVEFAVOURITE.REMOVE_FAVOURITE:
-            return state;
+            const newState = state.favourites.filter((item) => item.imdbID !== action.payload.imdbID);
+            return {...state,favourites: newState};
         default:
             return state;
     }
