@@ -1,36 +1,54 @@
-import React from 'react';
-import {connect} from "react-redux";
+import React from "react";
+import { connect } from "react-redux";
 import SearchBar from "../HomePage/SearchBar";
-import {Link} from "react-router-dom";
-import {routes} from "../../Router/Routes";
-import '../../Styles/SearchPage.scss';
+import { Link } from "react-router-dom";
+import { routes } from "../../Router/Routes";
+import "../../Styles/SearchPage.scss";
+import CardItem from "../FavSearchCard/CardItem";
 
 function SearchPage(props) {
-    console.log(props.searchItems.data);
-    const item = props.searchItems.data;
+  console.log(props.searchItems.data);
+  const items = props.searchItems.data;
 
-    return (
-        <div className={'searchPage'}>
-            <div className={'searchPage__toHome'}>
-                <Link style={LinkStyle} to={routes.Home.path}>Home / </Link>
-                <span>Search Results</span>
-            </div>
-            <div className={'searchPage__searchBar'}>
-                <SearchBar/>
-            </div>
-        </div>
-    );
+  return (
+    <div className={"searchPage"}>
+      <div className={"searchPage__toHome"}>
+        <Link style={LinkStyle} to={routes.Home.path}>
+          Home /{" "}
+        </Link>
+        <span>Search Results</span>
+      </div>
+      <div className={"searchPage__searchBar"}>
+        <SearchBar />
+      </div>
+      <div className={"searchPage__items"}>
+        {items !== undefined ? (
+          items.Search.map((item) => <CardItem key={item.imdbID} item={item} />)
+        ) : (
+          <h1
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "3rem",
+            }}
+          >
+            Not Found Movie
+          </h1>
+        )}
+      </div>
+    </div>
+  );
 }
 
 const LinkStyle = {
-    color:'#F5C518',
-    textDecoration:'none',
-}
+  color: "#F5C518",
+  textDecoration: "none",
+};
 
 const mapStateToProps = (state) => {
-    return{
-        searchItems: state.SearchReducer.searchItems,
-    }
-}
+  return {
+    searchItems: state.SearchReducer.searchItems,
+  };
+};
 
-export default  connect(mapStateToProps,null)(SearchPage);
+export default connect(mapStateToProps, null)(SearchPage);
