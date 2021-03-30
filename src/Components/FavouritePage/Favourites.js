@@ -7,12 +7,12 @@ import "../../Styles/Favourites.scss";
 
 function Favourites(props) {
   const items = props.favourites;
-
+  console.log(items);
   return (
     <div className={"favourites"}>
       <div className={"favourites__route"}>
         <Link style={LinkStyle} to={routes.Home.path}>
-          Home /{" "}
+          Home /{"  "}
         </Link>
         <span>Favourites</span>
       </div>

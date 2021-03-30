@@ -1,8 +1,10 @@
 import React from "react";
 import "../../Styles/CardItem.scss";
+import CardButton from "./CardButton";
 
 function CardItem(props) {
   const { item } = props;
+
   return (
     <div className={"cardItem"}>
       <div className={"cardItem__image"}>
@@ -27,8 +29,13 @@ function CardItem(props) {
         <span>N/A</span>
       </div>
       <div className={"cardItem__title"}>
-        <span>{item.Year}</span>
-        <span>{item.Title}</span>
+        <div className={"cardItem__title__title"}>
+          <span>{item.Year}</span>
+          <span>{item.Title}</span>
+        </div>
+        <div className={"cardItem__title__fav"}>
+          <CardButton info={item} />
+        </div>
       </div>
       <div className={"cardItem__content"}>
         The aging patriarch of an organized crime dynasty transfers control of
