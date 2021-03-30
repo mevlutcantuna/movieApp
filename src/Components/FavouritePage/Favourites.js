@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import CardItem from "../FavSearchCard/CardItem";
 import { Link } from "react-router-dom";
@@ -6,16 +6,7 @@ import { routes } from "../../Router/Routes";
 import "../../Styles/Favourites.scss";
 
 function Favourites(props) {
-  const [local, setLocal] = useState([]);
-  const x = JSON.parse(localStorage.getItem("favourites"));
-
-  const setLocalStorage = () => {
-    setLocal(x);
-  };
-
-  useEffect(() => {
-    setLocalStorage();
-  }, []);
+  const items = props.favourites;
 
   return (
     <div className={"favourites"}>
@@ -26,7 +17,7 @@ function Favourites(props) {
         <span>Favourites</span>
       </div>
       <div className={"favourites__cards"}>
-        {local.map((item) => (
+        {items.map((item) => (
           <CardItem key={item.imdbID} item={item} />
         ))}
       </div>
