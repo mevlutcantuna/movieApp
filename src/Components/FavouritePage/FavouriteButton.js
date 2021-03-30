@@ -9,7 +9,6 @@ function FavouriteButton(props) {
 
   useEffect(() => {
     if (props.favourites.includes(props.info) === true) {
-      console.log("can");
       return setIndex(true);
     } else {
       return setIndex(false);
