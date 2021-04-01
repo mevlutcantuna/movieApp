@@ -7,6 +7,7 @@ import "../../Styles/FavouriteButton.scss";
 function FavouriteButton(props) {
   const [index, setIndex] = useState(false);
 
+  //Redux Storagedan alınca çalışan kısım
   useEffect(() => {
     if (props.favourites.includes(props.info) === true) {
       return setIndex(true);
@@ -14,6 +15,19 @@ function FavouriteButton(props) {
       return setIndex(false);
     }
   }, [props.favourites, props.info]);
+
+  //LocalStoragedan datayı alınca çalışmayan kısım
+  /*useEffect(() => {
+    const localSt = localStorage.getItem('favourites');
+    const ArrayLocalSt = JSON.parse(localSt);
+    if(ArrayLocalSt !== null){
+      if(ArrayLocalSt.includes(props.info)){
+        setIndex(true)
+      }else{
+        setIndex(false)
+      }
+    }
+  },[props.info]);*/
 
   return (
     <div>
